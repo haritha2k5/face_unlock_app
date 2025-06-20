@@ -1,0 +1,158 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Face Unlock</title>
+</head>
+<body>
+  <h1>Face Unlock System</h1>
+  <video id="video" width="320" height="240" autoplay></video>  
+  <br>
+  <button onclick="captureAndSend()">Unlock</button>
+  <div id="status"></div>
+  <script src="/static/script.js"></script>
+</body>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Face Unlock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    video {
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #status {
+      margin-top: 16px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Face Unlock</h1>
+  <video id="video" autoplay playsinline></video>
+  <button onclick="captureAndSend()">Unlock</button>
+  <div id="status">Waiting for action...</div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face Unlock</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          animation: {
+            fade: 'fadeIn 1.5s ease-in-out',
+            pulseFast: 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0, transform: 'translateY(-10px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-sky-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 min-h-screen transition-colors duration-500">
+
+  <!-- Navbar -->
+  <nav class="w-full px-6 py-4 flex justify-between items-center bg-white/50 dark:bg-black/30 shadow-md backdrop-blur-md">
+    <h1 class="text-2xl font-bold text-indigo-700 dark:text-indigo-300">🔐 Face Unlock</h1>
+    <button onclick="toggleTheme()" class="text-sm px-3 py-1 border border-gray-300 dark:border-gray-400 rounded-full dark:text-gray-100">
+      🌓 Toggle Theme
+    </button>
+  </nav>
+
+  <!-- Main Section -->
+  <div class="flex flex-col items-center justify-center px-6 py-12">
+    <div class="text-center max-w-md w-full animate-fade">
+      <p class="mb-6 text-gray-600 dark:text-gray-300">Stand in front of the camera and click unlock to verify yourself.</p>
+
+      <div id="videoWrapper" class="relative inline-block border-4 border-gray-300 rounded-xl shadow-lg transition-all duration-300">
+        <video id="video" autoplay playsinline class="rounded-xl w-full max-w-xs aspect-video object-cover"></video>
+        <div id="loader" class="absolute inset-0 flex items-center justify-center bg-white/60 dark:bg-black/40 hidden">
+          <div class="text-sm font-medium text-gray-700 dark:text-gray-200">⏳ Verifying...</div>
+        </div>
+      </div>
+
+      <button onclick="captureAndSend()" id="unlockBtn"
+        class="mt-6 w-full py-3 rounded-lg bg-indigo-600 text-white font-semibold text-lg hover:bg-indigo-700 transition shadow-lg">
+        🔓 Unlock
+      </button>
+
+      <div id="status" class="mt-4 text-xl font-semibold">Waiting for action...</div>
+
+      <div class="mt-6 text-sm text-gray-500 dark:text-gray-400">
+        Tip: Try showing a different face to test failure case.
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+  <script>
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
